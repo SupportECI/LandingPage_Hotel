@@ -10,7 +10,7 @@ git checkout FrontEnd
 git add .
 git commit -m "Cambios"
 git log --online
-git checkout master
+git checkout main
 git merge FrontEnd
 git branch -d FrontEnd
 git branchgit pull
