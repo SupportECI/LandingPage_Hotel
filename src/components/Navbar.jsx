@@ -4,194 +4,204 @@ import { useState } from 'react'
 import {
   Dialog,
   DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
+  Disclosure,
 } from '@headlessui/react'
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, SparklesIcon, FireIcon, HomeIcon } from '@heroicons/react/24/outline'
+import '../navbar-animations.css'
 
-const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-]
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+// Icons for each service
+const habitacionesIcon = {
+  'Estándar': HomeIcon,
+  'Suite': SparklesIcon,
+  'Deluxe': SparklesIcon,
+}
+
+const serviciosIcon = {
+  'Spa': SparklesIcon,
+  'Restaurante': FireIcon,
+  'Piscina': SparklesIcon,
+}
+
+// Enhanced navigation with dropdowns
+const navigation = [
+  { name: 'Inicio', href: '#' },
+  {
+    name: 'Habitaciones',
+    children: [
+      { name: 'Estándar', href: '#estandar' },
+      { name: 'Suite', href: '#suite' },
+      { name: 'Deluxe', href: '#deluxe' },
+    ],
+  },
+  {
+    name: 'Servicios',
+    children: [
+      { name: 'Spa', href: '#spa' },
+      { name: 'Restaurante', href: '#restaurante' },
+      { name: 'Piscina', href: '#piscina' },
+    ],
+  },
+  { name: 'Contacto', href: '#contacto' },
 ]
 
-export default function Example() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+    <header className="bg-white shadow sticky top-0 z-50">
+      <nav
+        aria-label="Principal"
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+      >
+        {/* logo */}
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Hotel Boutique</span>
             <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+              src="/logo.png"
+              alt="Hotel logo"
               className="h-8 w-auto"
             />
           </a>
         </div>
+
+        {/* mobile menu button */}
         <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
           >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-6" />
+            <span className="sr-only">Abrir menú principal</span>
+            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
-              Product
-              <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-            </PopoverButton>
 
-            <PopoverPanel
-              transition
-              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-white shadow-lg outline-1 outline-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
-            >
-              <div className="p-4">
-                {products.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50"
-                  >
-                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
+        {/* desktop links */}
+        <div className="hidden lg:flex lg:gap-x-8">
+          {navigation.map((item) =>
+            item.children ? (
+              <Popover key={item.name} className="relative">
+                <Popover.Button className="group flex items-center gap-x-1 text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors duration-300">
+                  {item.name}
+                  <ChevronDownIcon
+                    className="h-4 w-4 text-gray-400 group-hover:text-indigo-600 transition-transform duration-300 group-hover:rotate-180"
+                    aria-hidden="true"
+                  />
+                </Popover.Button>
+                <Popover.Panel className="absolute left-0 mt-3 w-56 rounded-xl bg-white shadow-2xl ring-1 ring-black/5 transform transition-all duration-300 ease-out origin-top data-closed:scale-95 data-closed:opacity-0 data-closed:translate-y-1 data-open:scale-100 data-open:opacity-100 data-open:translate-y-0 backdrop-blur-sm popover-premium-shadow" style={{
+                  animation: 'popoverGhostIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
+                }}>
+                  <div className="p-4">
+                    <div className="mb-3 pb-3 border-b border-gray-200">
+                      <p className="text-xs font-semibold text-indigo-600 uppercase tracking-wide">{item.name}</p>
                     </div>
-                    <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
+                    {item.children.map((sub, idx) => {
+                      const Icon = item.name === 'Habitaciones' ? habitacionesIcon[sub.name] : serviciosIcon[sub.name]
+                      return (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          className="group flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-linear-to-r hover:from-indigo-50 hover:to-transparent hover:text-indigo-600 transition-all duration-200 disclosure-item"
+                          style={{
+                            animationDelay: `${idx * 0.08}s`
+                          }}
+                        >
+                          {Icon && <Icon className="h-5 w-5 text-gray-400 group-hover:text-indigo-600 transition-colors" />}
+                          <span>{sub.name}</span>
+                        </a>
+                      )
+                    })}
                   </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                {callsToAction.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
-                  >
-                    <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </PopoverPanel>
-          </Popover>
+                </Popover.Panel>
+              </Popover>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className="relative group text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors duration-300"
+              >
+                {item.name}
+                <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-indigo-600 scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-300" />
+              </a>
+            )
+          )}
+        </div>
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Features
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Marketplace
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Company
-          </a>
-        </PopoverGroup>
+        {/* Ayuda button */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <a
+            href="#Ayuda"
+            className="inline-block rounded-lg border-2 border-gray-900 px-5 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-all duration-300"
+          >
+            ¿Necesitas Ayuda?
           </a>
         </div>
       </nav>
+
+      {/* mobile dialog */}
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-        <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-50 bg-black/30 transition-opacity" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white p-6 transform transition-transform duration-300 ease-in-out data-[headlessui-state=open]:translate-x-0 data-[headlessui-state=closed]:translate-x-full">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">Hotel Boutique</span>
               <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                src="/logo.png"
+                alt="Hotel logo"
                 className="h-8 w-auto"
               />
             </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
             >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-6" />
+              <span className="sr-only">Cerrar menú</span>
+              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-                    Product
-                    <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
-                  </DisclosureButton>
-                  <DisclosurePanel className="mt-2 space-y-2">
-                    {[...products, ...callsToAction].map((item) => (
-                      <DisclosureButton
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </DisclosureButton>
-                    ))}
-                  </DisclosurePanel>
+          <div className="mt-6 space-y-2">
+            {navigation.map((item) =>
+              item.children ? (
+                <Disclosure key={item.name} as="div">
+                  <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-3 px-4 text-base font-medium text-gray-900 hover:bg-linear-to-r hover:from-indigo-50 hover:to-transparent hover:text-indigo-600 transition-all duration-200 ui-open:text-indigo-600 ui-open:bg-indigo-50">
+                    {item.name}
+                    <ChevronDownIcon className="h-5 w-5 text-gray-400 transition-transform duration-300 ui-open:rotate-180 ui-open:text-indigo-600" />
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="space-y-1 px-4 py-2 transition-all duration-200">
+                    {item.children.map((sub) => {
+                      const Icon = item.name === 'Habitaciones' ? habitacionesIcon[sub.name] : serviciosIcon[sub.name]
+                      return (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          className="flex items-center gap-3 rounded-lg py-2 pl-6 pr-4 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+                        >
+                          {Icon && <Icon className="h-4 w-4 text-gray-400 hover:text-indigo-600 transition-colors" />}
+                          {sub.name}
+                        </a>
+                      )
+                    })}
+                  </Disclosure.Panel>
                 </Disclosure>
+              ) : (
                 <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  key={item.name}
+                  href={item.href}
+                  className="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-linear-to-r hover:from-indigo-50 hover:to-transparent hover:text-indigo-600 transition-all duration-200"
                 >
-                  Features
+                  {item.name}
                 </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Marketplace
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Company
-                </a>
-              </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
-              </div>
-            </div>
+              )
+            )}
+            <a
+              href="#soporte"
+              className="block rounded-lg border-2 border-gray-900 px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 transition-all duration-200"
+            >
+              Soporte Ahora
+            </a>
           </div>
         </DialogPanel>
       </Dialog>

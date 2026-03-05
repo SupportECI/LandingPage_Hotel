@@ -1,13 +1,17 @@
-import HeroSection from "./components/HeroSection"
 import Navbar from "./components/Navbar"
-import Galery from "./components/Galery"
+import HeroSection from "./components/HeroSection"
+import BentoSecion from "./components/BentoSection"
+import Footer from "./components/Footer"
+import Stats from "./components/Stats"
 
 function App() {
   return (
     <>
       <Navbar />
       <HeroSection />
-      <Galery/>
+      <Stats />
+      <BentoSecion />
+      <Footer />
     </>
   )
 }
