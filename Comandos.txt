@@ -1,0 +1,17 @@
+Entrar a máster y creación de la rama
+
+git checkout main
+git branch FrontEnd
+git branch
+git checkout FrontEnd
+
+/* Trabajar */
+
+git add .
+git commit -m "Cambios"
+git log --online
+git checkout master
+git merge FrontEnd
+git branch -d FrontEnd
+git branchgit pull
+git push origin main

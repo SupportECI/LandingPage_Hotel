@@ -1,9 +1,13 @@
-import Blos from "./components/Blos"
+import HeroSection from "./components/HeroSection"
+import Navbar from "./components/Navbar"
+import Galery from "./components/Galery"
 
 function App() {
   return (
     <>
-      <Blos />
+      <Navbar />
+      <HeroSection />
+      <Galery/>
     </>
   )
 }
