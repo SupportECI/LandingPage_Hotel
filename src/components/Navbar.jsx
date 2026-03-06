@@ -57,10 +57,10 @@ export default function Navbar() {
         {/* logo */}
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Hotel Boutique</span>
+            <span className="sr-only">Palmeyras Inn</span>
             <img
-              src="/logo.png"
-              alt="Hotel logo"
+              src="./src/assets/Palmeyras_1.svg"
+              alt="Palmeyras Inn logo"
               className="h-8 w-auto"
             />
           </a>
@@ -146,10 +146,10 @@ export default function Navbar() {
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white p-6 transform transition-transform duration-300 ease-in-out data-[headlessui-state=open]:translate-x-0 data-[headlessui-state=closed]:translate-x-full">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Hotel Boutique</span>
+              <span className="sr-only">Palmeyras Inn</span>
               <img
-                src="/logo.png"
-                alt="Hotel logo"
+                src="./src/assets/Palmeyras_1.svg"
+                alt="Palmeyras Inn logo"
                 className="h-8 w-auto"
               />
             </a>
@@ -200,7 +200,7 @@ export default function Navbar() {
               href="#soporte"
               className="block rounded-lg border-2 border-gray-900 px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 transition-all duration-200"
             >
-              Soporte Ahora
+              ¿Necesitas Ayuda?
             </a>
           </div>
         </DialogPanel>

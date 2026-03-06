@@ -92,7 +92,7 @@ export default function BentoSection() {
             variants={itemVariants}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            Descubre los servicios exclusivos diseñados para hacerte vivir una experiencia inolvidable en nuestro hotel de clase mundial.
+            Descubre los servicios exclusivos diseñados para hacerte vivir una experiencia inolvidable en Palmeyras Inn, el destino perfecto para tu escapada.
           </motion.p>
         </motion.div>
 

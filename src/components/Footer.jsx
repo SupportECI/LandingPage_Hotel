@@ -48,8 +48,8 @@ export default function Footer() {
           {/* Sección Información del Hotel */}
           <motion.div variants={itemVariants}>
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-950">Luxury Hotel</h3>
-              <p className="text-sm text-gray-500 mt-2">Vive la experiencia hotelera más exclusiva del país.</p>
+              <h3 className="text-2xl font-bold text-gray-950">Palmeyras Inn</h3>
+              <p className="text-sm text-gray-500 mt-2">Vive la experiencia hotelera más exclusiva del país en Palmeyras Inn.</p>
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -64,8 +64,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-indigo-400" />
-                <a href="mailto:info@hotel.com" className="text-sm hover:text-gray-950 transition">
-                  info@hotel.com
+                <a href="mailto:info@palmeyrasinn.com" className="text-sm hover:text-gray-950 transition">
+                  info@palmeyrasinn.com
                 </a>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function Footer() {
             variants={itemVariants}
             className="text-center text-sm text-gray-500"
           >
-            © Copyright 2026. Todos los derechos reservados por Luxury Hotel.
+            © Copyright 2026. Todos los derechos reservados por Palmeyras Inn.
           </motion.p>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const HeroSection = () => {
   const [index, setIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
 
   const slides = [
     "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1920",
@@ -14,7 +13,6 @@ const HeroSection = () => {
   ]
 
   useEffect(() => {
-    setIsVisible(true)
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length)
     }, 5000)
@@ -27,7 +25,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-start pt-20 overflow-hidden bg-black">
       
       {/* --- SLIDER DE FONDO --- */}
       <div className="absolute inset-0 z-0">
@@ -56,7 +54,7 @@ const HeroSection = () => {
         {/* Título y Descripción */}
         <motion.h1
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate="visible"
           variants={itemVariants}
           className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl"
         >
@@ -65,17 +63,17 @@ const HeroSection = () => {
 
         <motion.p
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate="visible"
           variants={{ ...itemVariants, visible: { ...itemVariants.visible, transition: { delay: 0.2 } } }}
           className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl drop-shadow-lg"
         >
-          Descubre habitaciones de lujo, servicios excepcionales y una experiencia que no olvidarás en nuestro hotel premium.
+          Descubre habitaciones de lujo, servicios excepcionales y una experiencia que no olvidarás en Palmeyras Inn.
         </motion.p>
 
         {/* Botones */}
         <motion.div
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate="visible"
           variants={{ ...itemVariants, visible: { ...itemVariants.visible, transition: { delay: 0.4 } } }}
           className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16"
         >
@@ -92,7 +90,7 @@ const HeroSection = () => {
         <div className="w-full">
           <motion.p
             initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
+            animate="visible"
             variants={{ ...itemVariants, visible: { ...itemVariants.visible, transition: { delay: 0.6 } } }}
             className="text-xs sm:text-sm text-gray-200 mb-6 uppercase tracking-widest"
           >
@@ -101,7 +99,7 @@ const HeroSection = () => {
 
           <motion.div
             initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
+            animate="visible"
             variants={{ ...itemVariants, visible: { ...itemVariants.visible, transition: { delay: 0.8 } } }}
             className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500"
           >
