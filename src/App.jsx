@@ -8,6 +8,7 @@ import Us from "./components/Us"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import Stats from "./components/Stats"
+import FAQ from "./components/FAQ"
 import WhatsAppButton from "./components/WhatsAppButton"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Us />
       <Contact />
       <Stats />
+      <FAQ />
       <Footer />
       <WhatsAppButton />
     </>

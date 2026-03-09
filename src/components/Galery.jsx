@@ -1,64 +1,153 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, BedDouble, Bath, Expand } from "lucide-react";
 
 export default function Galeria() {
+
   const [imagenActiva, setImagenActiva] = useState(null);
 
   const imagenes = [
-    { src: "./src/assets/room.jpg", titulo: "Habitación Deluxe" },
-    { src: "./src/assets/room.jpg", titulo: "Vista al balcón" },
-    { src: "./src/assets/room.jpg", titulo: "Suite principal" },
-    { src: "./src/assets/room.jpg", titulo: "Área de descanso" },
+    {
+      src: "./src/assets/room.jpg",
+      titulo: "Habitación Deluxe",
+      size: "2,169",
+      beds: "3",
+      bath: "2",
+    },
+    {
+      src: "./src/assets/room.jpg",
+      titulo: "Suite Ejecutiva",
+      size: "1,540",
+      beds: "2",
+      bath: "1",
+    },
+    {
+      src: "./src/assets/room.jpg",
+      titulo: "Área de descanso",
+      size: "980",
+      beds: "1",
+      bath: "1",
+    },
+    {
+      src: "./src/assets/room.jpg",
+      titulo: "Vista del hotel",
+      size: "1,200",
+      beds: "2",
+      bath: "1",
+    },
   ];
 
   return (
-    <section className="w-full py-20 bg-gray-50">
+    <section className="w-full py-24 bg-white">
+
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Título */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900">
-            Galería del Hotel
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-10 mb-16 items-end">
+
+          <h2 className="text-4xl font-semibold text-gray-900 leading-tight">
+            Explora nuestros espacios
           </h2>
-          <p className="text-gray-500 mt-4 text-lg">
-            Descubre nuestros espacios y habitaciones
+
+          <p className="text-gray-500 max-w-md">
+            Descubre la comodidad y tranquilidad de Palmeyras Inn a través
+            de nuestras habitaciones y espacios diseñados para tu descanso.
           </p>
+
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[220px]">
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
 
-          {imagenes.map((img, index) => {
+          {/* Imagen grande */}
+          <div
+            className="md:row-span-2 relative overflow-hidden rounded-3xl cursor-pointer group"
+            onClick={() => setImagenActiva(imagenes[0].src)}
+          >
+            <img
+              src={imagenes[0].src}
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+            />
 
-            const tamaños = [
-              "md:col-span-2 md:row-span-2",
-              "",
-              "",
-              "md:col-span-2",
-            ];
+            {/* Card cristal */}
+            <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-4 text-white">
 
-            return (
-              <div
-                key={index}
-                className={`relative overflow-hidden rounded-2xl cursor-pointer group shadow-lg ${tamaños[index]}`}
-                onClick={() => setImagenActiva(img.src)}
-              >
-                <img
-                  src={img.src}
-                  alt={img.titulo}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                />
+              <h3 className="text-lg font-semibold mb-2">
+                {imagenes[0].titulo}
+              </h3>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-500 flex items-end p-6">
-                  <h3 className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition duration-500">
-                    {img.titulo}
-                  </h3>
+              <div className="flex items-center gap-4 text-sm opacity-90">
+
+                <div className="flex items-center gap-1">
+                  <Expand size={14} />
+                  {imagenes[0].size} sq.ft
                 </div>
+
+                <div className="flex items-center gap-1">
+                  <BedDouble size={14} />
+                  {imagenes[0].beds}
+                </div>
+
+                <div className="flex items-center gap-1">
+                  <Bath size={14} />
+                  {imagenes[0].bath}
+                </div>
+
               </div>
-            );
-          })}
+
+            </div>
+
+          </div>
+
+          {/* Imagen horizontal */}
+          <div
+            className="md:col-span-2 relative overflow-hidden rounded-3xl cursor-pointer group"
+            onClick={() => setImagenActiva(imagenes[1].src)}
+          >
+            <img
+              src={imagenes[1].src}
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+            />
+
+            <div className="absolute bottom-6 left-6 backdrop-blur-md bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white">
+              {imagenes[1].titulo}
+            </div>
+
+          </div>
+
+          {/* Imagen */}
+          <div
+            className="relative overflow-hidden rounded-3xl cursor-pointer group"
+            onClick={() => setImagenActiva(imagenes[2].src)}
+          >
+            <img
+              src={imagenes[2].src}
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+            />
+
+            <div className="absolute bottom-4 left-4 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm">
+              {imagenes[2].titulo}
+            </div>
+
+          </div>
+
+          {/* Imagen */}
+          <div
+            className="relative overflow-hidden rounded-3xl cursor-pointer group"
+            onClick={() => setImagenActiva(imagenes[3].src)}
+          >
+            <img
+              src={imagenes[3].src}
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+            />
+
+            <div className="absolute bottom-4 left-4 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm">
+              {imagenes[3].titulo}
+            </div>
+
+          </div>
+
         </div>
+
       </div>
 
       {/* Lightbox */}
@@ -66,19 +155,20 @@ export default function Galeria() {
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6">
 
           <button
-            className="absolute top-6 right-6 text-white hover:scale-110 transition"
+            className="absolute top-8 right-8 text-white"
             onClick={() => setImagenActiva(null)}
           >
-            <X size={32} />
+            <X size={34} />
           </button>
 
           <img
             src={imagenActiva}
-            alt="Vista ampliada"
-            className="max-w-6xl max-h-[90vh] rounded-xl shadow-2xl"
+            className="max-w-6xl max-h-[90vh] rounded-2xl"
           />
+
         </div>
       )}
+
     </section>
   );
 }
