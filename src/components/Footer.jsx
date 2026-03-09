@@ -16,19 +16,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.7,
       ease: 'easeOut',
     },
   },
@@ -36,8 +36,10 @@ const itemVariants = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-gray-700">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <footer className="bg-gray-50 border-t border-gray-100 text-gray-600">
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
           variants={containerVariants}
@@ -45,142 +47,251 @@ export default function Footer() {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {/* Sección Información del Hotel */}
+
+          {/* HOTEL INFO */}
+
           <motion.div variants={itemVariants}>
+
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-950">Palmeyras Inn</h3>
-              <p className="text-sm text-gray-500 mt-2">Vive la experiencia hotelera más exclusiva del país en Palmeyras Inn.</p>
+
+              <h3 className="text-2xl font-bold text-gray-900">
+                Palmeyras Inn
+              </h3>
+
+              <p className="text-sm text-gray-500 mt-3 leading-relaxed">
+                Vive la experiencia hotelera más exclusiva con lujo,
+                comodidad y servicios diseñados para una estancia inolvidable.
+              </p>
+
             </div>
+
+
+            {/* CONTACT */}
+
             <div className="space-y-4">
+
               <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-indigo-400" />
-                <p className="text-sm">Av. Principal 123, Capital</p>
+
+                <MapPin className="w-5 h-5 text-red-500" />
+
+                <p className="text-sm">
+                  Av. Principal 123, Capital
+                </p>
+
               </div>
+
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-indigo-400" />
-                <a href="tel:+1234567890" className="text-sm hover:text-gray-950 transition">
+
+                <Phone className="w-5 h-5 text-red-500" />
+
+                <a
+                  href="tel:+1234567890"
+                  className="text-sm hover:text-gray-900 transition"
+                >
                   +1 (234) 567-890
                 </a>
+
               </div>
+
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-indigo-400" />
-                <a href="mailto:info@palmeyrasinn.com" className="text-sm hover:text-gray-950 transition">
+
+                <Mail className="w-5 h-5 text-red-500" />
+
+                <a
+                  href="mailto:info@palmeyrasinn.com"
+                  className="text-sm hover:text-gray-900 transition"
+                >
                   info@palmeyrasinn.com
                 </a>
+
               </div>
+
             </div>
 
-            {/* Redes Sociales */}
-            <div className="flex gap-4 mt-6">
-              <a href="#" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-indigo-600 hover:text-white text-gray-700 transition">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-indigo-600 hover:text-white text-gray-700 transition">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-indigo-600 hover:text-white text-gray-700 transition">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-indigo-600 hover:text-white text-gray-700 transition">
-                <Linkedin className="w-5 h-5" />
-              </a>
+
+            {/* SOCIAL */}
+
+            <div className="flex gap-3 mt-6">
+
+              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+
+                <a
+                  key={i}
+                  href="#"
+                  className="
+                  inline-flex items-center justify-center
+                  w-10 h-10
+                  rounded-full
+                  bg-white
+                  border border-gray-200
+                  text-gray-600
+                  hover:bg-red-600
+                  hover:text-white
+                  hover:border-red-600
+                  transition
+                  "
+                >
+
+                  <Icon className="w-5 h-5" />
+
+                </a>
+
+              ))}
+
             </div>
+
           </motion.div>
 
-          {/* Información */}
+
+
+          {/* INFORMATION */}
+
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-semibold text-gray-950 uppercase tracking-wide mb-6">Información</h4>
+
+            <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-6">
+              Información
+            </h4>
+
             <ul className="space-y-4">
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Sobre Nosotros
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Habitaciones
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Servicios
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Promociones
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Galería
-                </a>
-              </li>
+
+              {[
+                'Sobre Nosotros',
+                'Habitaciones',
+                'Servicios',
+                'Promociones',
+                'Galería',
+              ].map((item) => (
+
+                <li key={item}>
+
+                  <a
+                    href="#"
+                    className="
+                    text-sm
+                    text-gray-600
+                    hover:text-red-600
+                    transition
+                    "
+                  >
+                    {item}
+                  </a>
+
+                </li>
+
+              ))}
+
             </ul>
+
           </motion.div>
 
-          {/* Servicio al Cliente */}
+
+
+          {/* CUSTOMER SERVICE */}
+
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-semibold text-gray-950 uppercase tracking-wide mb-6">Servicio al Cliente</h4>
+
+            <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-6">
+              Servicio al Cliente
+            </h4>
+
             <ul className="space-y-4">
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Contactanos
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Reservas
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Términos & Condiciones
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Política de Privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-950 transition">
-                  Política de Cancelación
-                </a>
-              </li>
+
+              {[
+                'Contáctanos',
+                'Reservas',
+                'Términos & Condiciones',
+                'Política de Privacidad',
+                'Política de Cancelación',
+              ].map((item) => (
+
+                <li key={item}>
+
+                  <a
+                    href="#"
+                    className="
+                    text-sm
+                    text-gray-600
+                    hover:text-red-600
+                    transition
+                    "
+                  >
+                    {item}
+                  </a>
+
+                </li>
+
+              ))}
+
             </ul>
+
           </motion.div>
 
-          {/* Noticias & Eventos */}
+
+
+          {/* EVENTS */}
+
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-semibold text-gray-950 uppercase tracking-wide mb-6">Eventos Próximos</h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm font-semibold text-gray-950">Boda de Primavera</p>
-                <p className="text-xs text-gray-500">Marzo 15, 2026</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-950">Conferencia Internacional</p>
-                <p className="text-xs text-gray-500">Marzo 20, 2026</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-950">Gala de Lujo</p>
-                <p className="text-xs text-gray-500">Abril 10, 2026</p>
-              </div>
+
+            <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-6">
+              Eventos Próximos
+            </h4>
+
+            <div className="space-y-5">
+
+              {[
+                {
+                  title: 'Boda de Primavera',
+                  date: 'Marzo 15, 2026',
+                },
+                {
+                  title: 'Conferencia Internacional',
+                  date: 'Marzo 20, 2026',
+                },
+                {
+                  title: 'Gala de Lujo',
+                  date: 'Abril 10, 2026',
+                },
+              ].map((event, i) => (
+
+                <div key={i}>
+
+                  <p className="text-sm font-semibold text-gray-900">
+                    {event.title}
+                  </p>
+
+                  <p className="text-xs text-gray-500">
+                    {event.date}
+                  </p>
+
+                </div>
+
+              ))}
+
             </div>
+
           </motion.div>
+
         </motion.div>
 
-        {/* Divider */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+
+
+        {/* COPYRIGHT */}
+
+        <div className="mt-16 pt-8 border-t border-gray-200">
+
           <motion.p
             variants={itemVariants}
             className="text-center text-sm text-gray-500"
           >
-            © Copyright 2026. Todos los derechos reservados por Palmeyras Inn.
+
+            © 2026 Palmeyras Inn. Todos los derechos reservados.
+
           </motion.p>
+
         </div>
+
       </div>
+
     </footer>
   )
 }

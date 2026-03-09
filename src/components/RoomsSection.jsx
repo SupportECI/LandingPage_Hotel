@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Star, Users, Clock, Wifi, Coffee, ParkingCircle, Waves } from 'lucide-react'
@@ -21,123 +23,230 @@ const amenityIcons = {
 }
 
 const RoomCard = ({ room }) => {
+
   const itemVariants = {
-    hidden: { opacity: 0, y: 15 }, 
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.21, 0.45, 0.32, 0.9],
+        duration: 0.7,
+        ease: 'easeOut',
       },
     },
   }
 
   return (
+
     <motion.div
       variants={itemVariants}
-      className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-red-200 transition-all duration-500 hover:shadow-xl hover:shadow-gray-100/50"
+      className="
+      group
+      bg-white
+      rounded-2xl
+      overflow-hidden
+      border border-gray-100
+      hover:border-red-200
+      transition-all duration-500
+      hover:shadow-xl
+      hover:shadow-gray-200/40
+      "
     >
-      <div className="relative h-44 overflow-hidden bg-gray-100">
+
+      {/* IMAGE */}
+
+      <div className="relative h-48 overflow-hidden bg-gray-100">
+
         <img
           src={room.image}
           alt={room.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-red-600 px-2 py-0.5 rounded shadow-sm tracking-wider">
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-80" />
+
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[11px] font-semibold text-red-600 px-3 py-1 rounded-full shadow-sm tracking-wide">
           {room.category}
         </div>
+
       </div>
 
-      <div className="p-4">
-        <div className="flex justify-between items-start mb-1">
-          <h3 className="text-sm font-bold text-gray-900 truncate leading-tight pr-2">{room.name}</h3>
-          <div className="flex items-center gap-1 shrink-0">
-            <Star size={10} className="text-yellow-400 fill-yellow-400" />
-            <span className="text-[11px] font-bold text-gray-900">{room.rating}</span>
-          </div>
-        </div>
-        
-        <p className="text-[10px] text-gray-400 mb-3">{room.reviews} reseñas</p>
 
-        <div className="flex gap-3 mb-4 text-gray-500 text-[11px]">
+      {/* CONTENT */}
+
+      <div className="p-5">
+
+        <div className="flex justify-between items-start mb-2">
+
+          <h3 className="text-base font-bold text-gray-900 leading-tight pr-2">
+            {room.name}
+          </h3>
+
+          <div className="flex items-center gap-1">
+
+            <Star size={14} className="text-yellow-400 fill-yellow-400" />
+
+            <span className="text-sm font-semibold text-gray-900">
+              {room.rating}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <p className="text-xs text-gray-400 mb-4">
+          {room.reviews} reseñas
+        </p>
+
+
+        {/* INFO */}
+
+        <div className="flex gap-4 mb-4 text-gray-500 text-xs">
+
           <div className="flex items-center gap-1.5">
-            <Users size={12} className="text-gray-400" />
+            <Users size={14} />
             <span>{room.guests}</span>
           </div>
+
           <div className="flex items-center gap-1.5">
-            <Clock size={12} className="text-gray-400" />
+            <Clock size={14} />
             <span>{room.duration}</span>
           </div>
+
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mb-5">
+
+        {/* AMENITIES */}
+
+        <div className="flex flex-wrap gap-2 mb-5">
+
           {room.amenities.slice(0, 3).map((amenity) => {
+
             const IconComponent = amenityIcons[amenity] || Wifi
+
             return (
-              <div key={amenity} className="flex items-center gap-1 text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded">
-                <IconComponent size={10} />
+
+              <div
+                key={amenity}
+                className="
+                flex items-center gap-1
+                text-xs
+                text-gray-500
+                bg-gray-50
+                px-2.5 py-1
+                rounded-md
+                "
+              >
+
+                <IconComponent size={12} />
+
                 <span>{amenity}</span>
+
               </div>
+
             )
+
           })}
+
         </div>
 
-        {/* Solo el precio, sin el botón */}
+
+        {/* PRICE */}
+
         <div className="flex items-end justify-between">
+
           <div>
-            <span className="text-[9px] text-gray-400 block uppercase font-medium">Desde</span>
-            <div className="text-lg font-extrabold text-gray-900 leading-none">
+
+            <span className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide block">
+              Desde
+            </span>
+
+            <div className="text-2xl font-bold text-gray-900 leading-none">
+
               ${room.price}
-              <span className="text-gray-400 text-[10px] font-normal ml-0.5">{room.pricePerHour}</span>
+
+              <span className="text-gray-400 text-xs font-normal ml-1">
+                {room.pricePerHour}
+              </span>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </motion.div>
+
   )
+
 }
 
 export default function RoomsSection() {
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.08,
       },
     },
   }
 
   return (
-    <section className="py-12 px-4 bg-white">
+
+    <section className="py-16 px-6 bg-white">
+
       <div className="max-w-7xl mx-auto">
+
+
+        {/* HEADER */}
+
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 font-serif">
+
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+
             Nuestras Habitaciones
+
           </h2>
-          <p className="text-sm text-gray-500 max-w-xl mx-auto">
-            Lujo y confort diseñado para tu descanso
+
+          <p className="text-gray-500 max-w-xl mx-auto">
+
+            Espacios diseñados para ofrecerte descanso, lujo y comodidad en cada estancia.
+
           </p>
+
         </motion.div>
+
+
+        {/* GRID */}
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7"
         >
+
           {rooms.map((room) => (
             <RoomCard key={room.id} room={room} />
           ))}
+
         </motion.div>
+
       </div>
+
     </section>
+
   )
+
 }

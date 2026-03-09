@@ -2,6 +2,10 @@ import Navbar from "./components/Navbar"
 import HeroSection from "./components/HeroSection"
 import BentoSecion from "./components/BentoSection"
 import RoomsSection from "./components/RoomsSection"
+import Galery from "./components/Galery"
+import Ubicacion from "./components/Ubicacion"
+import Us from "./components/Us"
+import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import Stats from "./components/Stats"
 import WhatsAppButton from "./components/WhatsAppButton"
@@ -11,9 +15,13 @@ function App() {
     <>
       <Navbar />
       <HeroSection />
-      <Stats />
       <RoomsSection />
       <BentoSecion />
+      <Galery />
+      <Ubicacion />
+      <Us />
+      <Contact />
+      <Stats />
       <Footer />
       <WhatsAppButton />
     </>

@@ -13,32 +13,38 @@ const features = [
   {
     icon: SparklesIcon,
     title: 'Spa & Bienestar',
-    description: 'Relájate en nuestro spa premium con tratamientos de clase mundial, masajes relajantes y terapias rejuvenecedoras.',
+    description:
+      'Relájate en nuestro spa premium con tratamientos de clase mundial, masajes relajantes y terapias rejuvenecedoras.',
   },
   {
     icon: FireIcon,
     title: 'Restaurante Gourmet',
-    description: 'Disfruta de la cocina más exquisita preparada por chefs internacionales. Experiencia culinaria incomparable.',
+    description:
+      'Disfruta de la cocina más exquisita preparada por chefs internacionales en una experiencia culinaria única.',
   },
   {
     icon: HomeIcon,
     title: 'Habitaciones Lujosas',
-    description: 'Suites diseñadas con elegancia, tecnología moderna y vistas panorámicas que te dejarán sin aliento.',
+    description:
+      'Suites elegantes con tecnología moderna, diseño sofisticado y vistas espectaculares.',
   },
   {
     icon: BuildingLibraryIcon,
     title: 'Piscina Infinita',
-    description: 'Nuestras piscinas climatizadas ofrecen vistas espectaculares y un ambiente exclusivo para tu disfrute.',
+    description:
+      'Piscinas climatizadas con vistas panorámicas y ambiente exclusivo para una experiencia inolvidable.',
   },
   {
     icon: CheckBadgeIcon,
     title: 'Servicio Concierge',
-    description: 'Disponible 24/7 para cumplir cada uno de tus deseos y necesidades durante tu estadía.',
+    description:
+      'Atención personalizada disponible 24/7 para cumplir cualquier necesidad durante tu estadía.',
   },
   {
     icon: SparklesIcon,
     title: 'Eventos & Conferencias',
-    description: 'Espacios modernos y flexible para bodas, conferencias corporativas y celebraciones especiales.',
+    description:
+      'Espacios modernos ideales para bodas, eventos corporativos y celebraciones especiales.',
   },
 ]
 
@@ -47,90 +53,137 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.7,
       ease: 'easeOut',
     },
   },
 }
 
-export default function BentoSection() {
+export default function ServicesSection() {
   return (
-    <section className="bg-white py-16 md:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-20 md:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+        {/* HEADER */}
+
         <motion.div
-          className="text-center"
+          className="text-center max-w-2xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
+
           <motion.p
             variants={itemVariants}
-            className="text-sm font-semibold text-indigo-600 mb-2"
+            className="text-sm font-semibold text-red-600 mb-2 tracking-wide uppercase"
           >
             Servicios Premium
           </motion.p>
+
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
           >
             Lujo en Cada Detalle
           </motion.h2>
+
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-600"
           >
-            Descubre los servicios exclusivos diseñados para hacerte vivir una experiencia inolvidable en Palmeyras Inn, el destino perfecto para tu escapada.
+            Descubre los servicios exclusivos diseñados para brindarte una
+            experiencia única en Palmeyras Inn.
           </motion.p>
+
         </motion.div>
 
+
+        {/* GRID */}
+
         <motion.div
-          className="mt-12 md:mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
+
           {features.map((feature, idx) => {
+
             const Icon = feature.icon
+
             return (
+
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className="group relative bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-indigo-200 transition-all duration-300"
+                whileHover={{ y: -10 }}
+                className="
+                group
+                relative
+                bg-white
+                rounded-2xl
+                p-8
+                border border-gray-100
+                hover:border-red-200
+                transition-all
+                duration-300
+                hover:shadow-xl
+                hover:shadow-gray-200/40
+                "
               >
-                <div className="absolute inset-0 bg-linear-to-b from-indigo-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+
+                {/* GRADIENT HOVER */}
+
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-red-50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+
                 <div className="relative">
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-indigo-100 rounded-xl mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
-                    <Icon className="w-7 h-7 text-indigo-600 group-hover:text-white transition-colors duration-300" />
+
+                  {/* ICON */}
+
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-red-100 mb-6 group-hover:bg-red-600 transition-colors duration-300">
+
+                    <Icon className="w-7 h-7 text-red-600 group-hover:text-white transition-colors duration-300" />
+
                   </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-950 mb-3">
+
+
+                  {/* TITLE */}
+
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     {feature.title}
                   </h3>
-                  
+
+
+                  {/* DESCRIPTION */}
+
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {feature.description}
                   </p>
+
                 </div>
+
               </motion.div>
+
             )
+
           })}
+
         </motion.div>
+
       </div>
     </section>
   )
