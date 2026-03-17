@@ -112,9 +112,9 @@ export default function Navbar() {
             <span className="sr-only">Palmeyras Inn</span>
 
             <img
-              src="./src/assets/Palmeyras_1-.png"
+              src="./src/assets/Palmeyras_.svg"
               alt="Palmeyras Inn logo"
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
 
           </a>

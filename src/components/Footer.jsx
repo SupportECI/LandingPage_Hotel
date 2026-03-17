@@ -54,9 +54,7 @@ export default function Footer() {
 
             <div className="mb-6">
 
-              <h3 className="text-2xl font-bold text-gray-900">
-                Palmeyras Inn
-              </h3>
+              <img src="./src/assets/Palmeyras_.svg" width={90} alt="Logo_Palmeyras" />
 
               <p className="text-sm text-gray-500 mt-3 leading-relaxed">
                 Vive la experiencia hotelera más exclusiva con lujo,
